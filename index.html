@@ -82,7 +82,7 @@
         
 
     // populate();
-
+        const section = document.querySelector('section');
     // async & await
     const link = 'https://miki-peric.github.io/JSONtest/pitanja.json';
 
@@ -100,7 +100,12 @@
     };
 
     getTodos(link)
-    .then(data => console.log('resolved:', data))
+    .then(data => { console.log('resolved:', data);
+            data.forEach(element => {
+                section.innerHTML += `<p>${element.naslov}</p>`
+            });
+        }
+    )
     .catch(err => console.log('rejected:', err.message));
 
     </script>
