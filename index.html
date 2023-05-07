@@ -84,10 +84,11 @@
     // populate();
 
     // async & await
+    const link = 'https://miki-peric.github.io/JSONtest/pitanja.json';
 
-    const getTodos = async () => {
+    const getTodos = async (link) => {
 
-    let response = await fetch('https://miki-peric.github.io/JSONtest/pitanja.json');
+    let response = await fetch(link);
 
     if(response.status !== 200){
         throw new Error('cannot fetch the data');
@@ -98,7 +99,7 @@
 
     };
 
-    getTodos()
+    getTodos(link)
     .then(data => console.log('resolved:', data))
     .catch(err => console.log('rejected:', err.message));
 
