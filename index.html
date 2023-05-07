@@ -21,18 +21,18 @@
 
     <script>
 
-    async function populate() {
+    // async function populate() {
 
-      const requestURL = 'https://miki-peric.github.io/JSONtest/pitanja.json';
-      const request = new Request(requestURL);
+    //   const requestURL = 'https://miki-peric.github.io/JSONtest/pitanja.json';
+    //   const request = new Request(requestURL);
 
-      const response = await fetch(request);
-      const superHeroes = await response.json();
-        console.log(superHeroes);
-    //   populateHeader(superHeroes);
-    //   populateHeroes(superHeroes);
+    //   const response = await fetch(request);
+    //   const superHeroes = await response.json();
+    //     console.log(superHeroes);
+    // //   populateHeader(superHeroes);
+    // //   populateHeroes(superHeroes);
 
-    }
+    // }
 
     // function populateHeader(obj) {
     //   const header = document.querySelector('header');
@@ -81,7 +81,26 @@
 
         
 
-    populate();
+    // populate();
+
+    // async & await
+
+    const getTodos = async () => {
+
+    let response = await fetch('https://miki-peric.github.io/JSONtest/pitanja.json');
+
+    if(response.status !== 200){
+        throw new Error('cannot fetch the data');
+    }
+
+    let data = await response.json();
+    return data;
+
+    };
+
+    getTodos()
+    .then(data => console.log('resolved:', data))
+    .catch(err => console.log('rejected:', err.message));
 
     </script>
   </body>
